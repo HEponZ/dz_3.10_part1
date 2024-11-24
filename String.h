@@ -19,7 +19,7 @@ public:
 			strcpy_s(string, size_S, string_S);
 		}
 	}
-	String(String&& string_S) : string{ string_S.string }, size{ string_S.size } 
+	String(String&& string_S) : string{ string_S.string }, size{ string_S.size }
 	{
 		string_S.string = nullptr;
 		string_S.size = 0;
@@ -46,12 +46,48 @@ public:
 		strcpy_s(string, size, string_S);
 	}
 
-
-	String* sin_str(String* str_mas, int& size);
-	void print(String* str_mas, int& size);
+	void print();
 	static int get_count()
 	{
 		return count;
+	}
+
+	char& operator[](int index)
+	{
+		return string[index];
+	}
+
+	char& operator[](int index) const
+	{
+		return string[index];
+	}
+
+	int operator()(char symbol)
+	{
+		/*if (strchr(string, symbol) != 0)
+		{
+			
+		}*/
+
+		for (int i{ 0 }; i < strlen(string); i++)
+		{
+			if (string[i] == symbol)
+			{
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
+	friend istream& operator>> (istream& my_cin, String& str)
+	{
+		char buffer[100]{};
+
+		gets_s(buffer);
+		strcpy_s(str.string, strlen(buffer) + 1, buffer);
+
+		return my_cin;
 	}
 
 	~String()
