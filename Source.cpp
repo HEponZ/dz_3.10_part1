@@ -4,7 +4,7 @@ int main()
 {
 	setlocale(LC_ALL, "rus");
 	String str1, str2;
-	int choise = 0, index = 0;
+	int choise = 0, index = 0, size;
 	char symbol;
 	enum MENU {
 		EXIT = 0,
@@ -12,10 +12,11 @@ int main()
 		PRINT,
 		COUNT_STRING,
 		COUT_INDEX,
-		FIND_SYMBOL
+		FIND_SYMBOL,
+		SIZE
 	};
 
-	cout << "1 - Ввод новой строки\n2 - Вывод\n3 - Вывод кол-ва строк\n4 - Вывод символа по индексу из 1 строки\n0 - ВЫХОД\n";
+	cout << "1 - Ввод новой строки\n2 - Вывод\n3 - Вывод кол-ва строк\n4 - Вывод символа по индексу из 1 строки\n5 - Поиск символа во 2 строке\n0 - ВЫХОД\n";
 
 	do
 	{
@@ -38,15 +39,18 @@ int main()
 			printf("Кол-во строк: %d\n", str1.get_count());
 			break;
 		case COUT_INDEX:
-			cout << "Введите индекс: ";
+			cout << "Введите индекс в 1 строке: ";
 			cin >> index;
 			cout << str1[index] << "\n";
 			break;
 		case FIND_SYMBOL:
-			cout << "Введите символ\n";
+			cout << "Введите символ во 2 строке: ";
 			cin >> symbol;
 			cout << str2(symbol) << "\n";
 			break;
+		case SIZE:
+			size = (int)str1;
+			cout << "В строке один " << size << " символов" << "\n";
 		case EXIT:
 			break;
 		}

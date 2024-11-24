@@ -64,11 +64,6 @@ public:
 
 	int operator()(char symbol)
 	{
-		/*if (strchr(string, symbol) != 0)
-		{
-			
-		}*/
-
 		for (int i{ 0 }; i < strlen(string); i++)
 		{
 			if (string[i] == symbol)
@@ -79,6 +74,8 @@ public:
 
 		return -1;
 	}
+
+	explicit operator int() const { return strlen(string); }
 
 	friend istream& operator>> (istream& my_cin, String& str)
 	{
